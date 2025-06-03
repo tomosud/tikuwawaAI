@@ -1,4 +1,4 @@
-# Chihuahua vs Chikuwa Classifier Dependencies
+# Chihuahua vs Chikuwa Classifier - Essential Dependencies Only
 
 # Core Python packages
 Pillow>=9.0.0
@@ -14,11 +14,8 @@ opencv-python>=4.5.0
 torch>=1.12.0
 torchvision>=0.13.0
 
-# Web interface (optional)
+# Web UI
 gradio>=3.0.0
 
-# Additional utilities (if needed)
-pyperclip
-youtube_transcript_api
-yt-dlp
-google-generativeai
+# Clipboard support
+pyperclip>=1.8.0
