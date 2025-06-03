@@ -101,9 +101,11 @@ class ImageDownloader:
                 
             # 画像として有効かチェック
             try:
-                with Image.open(response.content) as img:
-                    # 最小サイズチェック（50x50ピクセル）
-                    if img.width < 50 or img.height < 50:
+                from io import BytesIO
+                img_bytes = BytesIO(response.content)
+                with Image.open(img_bytes) as img:
+                    # 最小サイズチェック（30x30ピクセル）
+                    if img.width < 30 or img.height < 30:
                         return False
                     
                     # RGB形式に変換して保存
@@ -113,8 +115,15 @@ class ImageDownloader:
                     img.save(save_path, 'JPEG', quality=85)
                     return True
                     
-            except Exception:
-                return False
+            except Exception as e:
+                logger.debug(f"画像処理エラー: {e}")
+                # PILで処理できない場合は直接保存を試行
+                try:
+                    with open(save_path, 'wb') as f:
+                        f.write(response.content)
+                    return True
+                except Exception:
+                    return False
                 
         except Exception as e:
             logger.debug(f"ダウンロードエラー {url}: {e}")

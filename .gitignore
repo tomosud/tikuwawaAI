@@ -162,17 +162,14 @@ cython_debug/
 # Project specific ignores
 # ======================
 
-# Downloaded dataset images (too large for GitHub)
-dataset/chihuahua/*.jpg
-dataset/chihuahua/*.jpeg
-dataset/chihuahua/*.png
-dataset/chikuwa/*.jpg
-dataset/chikuwa/*.jpeg
-dataset/chikuwa/*.png
-
-# Keep directory structure but ignore images
-!dataset/chihuahua/.gitkeep
-!dataset/chikuwa/.gitkeep
+# Allow dataset images for fair use research purposes
+# (Small dataset for educational/research AI training)
+# dataset/chihuahua/*.jpg
+# dataset/chihuahua/*.jpeg
+# dataset/chihuahua/*.png
+# dataset/chikuwa/*.jpg
+# dataset/chikuwa/*.jpeg
+# dataset/chikuwa/*.png
 
 # Training logs and outputs
 download_log.txt
