@@ -96,8 +96,8 @@ class ChihuahuaChikuwaWebClassifier:
                 predicted_class_jp = self.class_names_jp[predicted_idx]
                 predicted_class_en = self.class_names[predicted_idx]
                 
-                # 結果メッセージ
-                result_text = f"🎯 判定結果: {predicted_class_jp}"
+                # 結果メッセージ（HTMLで巨大フォント）
+                result_text = f'<div style="font-size: 80px; font-weight: 900; text-align: center; color: #ff1744; text-shadow: 4px 4px 8px rgba(0,0,0,0.5); padding: 30px; background: linear-gradient(135deg, #ffebee, #ffcdd2); border-radius: 20px; border: 5px solid #e91e63; margin: 20px 0;">🎯 判定結果: {predicted_class_jp}</div>'
                 confidence_text = f"信頼度: {confidence:.2%}"
                 
                 # 詳細情報
@@ -172,16 +172,31 @@ def create_web_ui():
         css="""
         .main-header { text-align: center; margin: 20px 0; }
         .result-box {
-            font-size: 48px !important;
-            font-weight: bold !important;
+            font-size: 72px !important;
+            font-weight: 900 !important;
             text-align: center !important;
-            color: #ff6b6b !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
-            padding: 20px !important;
-            background: linear-gradient(135deg, #fff5f5, #ffe3e3) !important;
-            border-radius: 15px !important;
-            border: 3px solid #ff9999 !important;
-            margin: 10px 0 !important;
+            color: #ff1744 !important;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5) !important;
+            padding: 30px !important;
+            background: linear-gradient(135deg, #ffebee, #ffcdd2) !important;
+            border-radius: 20px !important;
+            border: 5px solid #e91e63 !important;
+            margin: 20px 0 !important;
+            min-height: 120px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-transform: uppercase !important;
+            letter-spacing: 3px !important;
+        }
+        .result-box textarea {
+            font-size: 72px !important;
+            font-weight: 900 !important;
+            text-align: center !important;
+            color: #ff1744 !important;
+            background: transparent !important;
+            border: none !important;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5) !important;
         }
         .detail-box { font-family: monospace; white-space: pre-line; }
         """
@@ -204,10 +219,8 @@ def create_web_ui():
                     upload_btn = gr.Button("🔍 判定実行", variant="primary", size="lg")
                 
                 with gr.Column():
-                    upload_result = gr.Textbox(
-                        label="判定結果",
-                        interactive=False,
-                        elem_classes=["result-box"]
+                    upload_result = gr.HTML(
+                        label="判定結果"
                     )
                     upload_detail = gr.Textbox(
                         label="詳細情報",
@@ -232,10 +245,8 @@ def create_web_ui():
                     )
                 
                 with gr.Column():
-                    clipboard_result = gr.Textbox(
-                        label="判定結果",
-                        interactive=False,
-                        elem_classes=["result-box"]
+                    clipboard_result = gr.HTML(
+                        label="判定結果"
                     )
                     clipboard_detail = gr.Textbox(
                         label="詳細情報",
