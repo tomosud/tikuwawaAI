@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐕 チワワ vs チクワ AI判定器 🥢</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>🐕 チワワ vs チクワ AI判定器 🥢</h1>
+            <p>画像をアップロードしてチワワとチクワを判定します</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📷</div>
+                        <p>画像をドラッグ&ドロップするか<br>クリックして選択してください</p>
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <button class="upload-btn" id="uploadBtn">画像を選択</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="image-preview">
+                    <img id="previewImage" alt="Preview">
+                </div>
+                <button class="analyze-btn" id="analyzeBtn">🔍 AI判定を実行</button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-box" id="resultBox">
+                    <div class="result-text" id="resultText"></div>
+                    <div class="confidence-text" id="confidenceText"></div>
+                </div>
+                <div class="detail-box" id="detailBox"></div>
+                <button class="reset-btn" id="resetBtn">新しい画像で判定</button>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>AI が画像を分析中...</p>
+            </div>
+        </main>
+
+        <footer class="info-section">
+            <div class="info-content">
+                <h2>📖 使用方法</h2>
+                <ul>
+                    <li><strong>画像選択:</strong> 判定したい画像をドラッグ&ドロップまたはクリックして選択</li>
+                    <li><strong>AI判定:</strong> 「AI判定を実行」ボタンをクリックして結果を確認</li>
+                    <li><strong>対応形式:</strong> JPG、PNG、BMP等の一般的な画像形式</li>
+                </ul>
+                
+                <h3>🎯 判定について</h3>
+                <ul>
+                    <li><strong>チワワ:</strong> 犬の画像として判定</li>
+                    <li><strong>チクワ:</strong> 食品の画像として判定</li>
+                    <li>信頼度が高いほど確信度が高い結果です</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
