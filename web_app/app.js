@@ -168,24 +168,28 @@ class App {
         const analyzeBtn = document.getElementById('analyzeBtn');
         const resetBtn = document.getElementById('resetBtn');
 
-        // ファイル選択ボタン
-        uploadBtn.addEventListener('click', () => {
+        // ファイル選択ボタン - アップロードエリアのクリックと重複を避けるため停止伝播
+        uploadBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             imageInput.click();
         });
 
-        // アップロードエリアクリック
-        uploadArea.addEventListener('click', () => {
-            imageInput.click();
-        });
-
-        // ファイル選択
-        imageInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                this.handleImageUpload(e.target.files[0]);
+        // アップロードエリアクリック（ボタン以外の領域）
+        uploadArea.addEventListener('click', (e) => {
+            // ボタンがクリックされた場合は処理しない
+            if (e.target !== uploadBtn) {
+                imageInput.click();
             }
         });
 
-        // ドラッグ&ドロップ
+        // ファイル選択 - 選択後すぐにAI処理を実行
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                this.handleImageUpload(e.target.files[0], true); // 自動実行フラグ
+            }
+        });
+
+        // ドラッグ&ドロップ - ドロップ後すぐにAI処理を実行
         uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
             uploadArea.classList.add('dragover');
@@ -200,7 +204,24 @@ class App {
             uploadArea.classList.remove('dragover');
             
             if (e.dataTransfer.files.length > 0) {
-                this.handleImageUpload(e.dataTransfer.files[0]);
+                this.handleImageUpload(e.dataTransfer.files[0], true); // 自動実行フラグ
+            }
+        });
+
+        // ペースト機能
+        document.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const items = e.clipboardData.items;
+            
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if (item.type.startsWith('image/')) {
+                    const file = item.getAsFile();
+                    if (file) {
+                        this.handleImageUpload(file, true); // 自動実行フラグ
+                        break;
+                    }
+                }
             }
         });
 
@@ -215,7 +236,7 @@ class App {
         });
     }
 
-    handleImageUpload(file) {
+    handleImageUpload(file, autoAnalyze = false) {
         if (!file.type.startsWith('image/')) {
             alert('画像ファイルを選択してください。');
             return;
@@ -229,6 +250,14 @@ class App {
             // プレビューセクションを表示
             document.getElementById('previewSection').style.display = 'block';
             document.getElementById('resultSection').style.display = 'none';
+            
+            // 自動実行フラグが設定されている場合、すぐにAI判定を実行
+            if (autoAnalyze) {
+                // 画像の読み込み完了を待ってから実行
+                previewImage.onload = () => {
+                    this.analyzeImage();
+                };
+            }
         };
         reader.readAsDataURL(file);
     }
