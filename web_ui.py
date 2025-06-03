@@ -171,7 +171,18 @@ def create_web_ui():
         theme=gr.themes.Soft(),
         css="""
         .main-header { text-align: center; margin: 20px 0; }
-        .result-box { font-size: 18px; font-weight: bold; }
+        .result-box {
+            font-size: 48px !important;
+            font-weight: bold !important;
+            text-align: center !important;
+            color: #ff6b6b !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+            padding: 20px !important;
+            background: linear-gradient(135deg, #fff5f5, #ffe3e3) !important;
+            border-radius: 15px !important;
+            border: 3px solid #ff9999 !important;
+            margin: 10px 0 !important;
+        }
         .detail-box { font-family: monospace; white-space: pre-line; }
         """
     ) as demo:
@@ -292,7 +303,7 @@ def main():
     
     demo.launch(
         server_name="localhost",
-        server_port=7860,
+        server_port=None,  # 自動的に空いているポートを探す
         share=False,
         inbrowser=True,  # 自動的にブラウザを開く
         show_error=True
