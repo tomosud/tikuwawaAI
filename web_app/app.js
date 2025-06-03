@@ -177,7 +177,6 @@ class App {
         const uploadBtn = document.getElementById('uploadBtn');
         const imageInput = document.getElementById('imageInput');
         const analyzeBtn = document.getElementById('analyzeBtn');
-        const resetBtn = document.getElementById('resetBtn');
 
         // ファイル選択ボタンのみのクリック処理
         uploadBtn.addEventListener('click', (e) => {
@@ -234,12 +233,9 @@ class App {
         });
 
         // 判定ボタンは非表示にする（自動実行するため不要）
-        analyzeBtn.style.display = 'none';
-
-        // リセットボタン
-        resetBtn.addEventListener('click', () => {
-            this.resetApp();
-        });
+        if (analyzeBtn) {
+            analyzeBtn.style.display = 'none';
+        }
     }
 
     handleImageUpload(file, autoAnalyze = false) {
