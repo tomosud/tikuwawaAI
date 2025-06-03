@@ -1,0 +1,152 @@
+{
+  "split_data": {
+    "train": {
+      "paths": [
+        "dataset\\chihuahua\\chihuahua_cc32dd56_004.jpg",
+        "dataset\\chikuwa\\chikuwa_c61c232a_015.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_194ec37b_001.jpg",
+        "dataset\\chihuahua\\chihuahua_8f2dfcf9_018.jpg",
+        "dataset\\chikuwa\\chikuwa_c27514f6_024.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_56d8579b_000.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_ddaf87e7_002.jpg",
+        "dataset\\chihuahua\\chihuahua_2ea43d09_006.jpg",
+        "dataset\\chihuahua\\chihuahua_5099d82b_010.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_960c34d7_005.jpg",
+        "dataset\\chihuahua\\chihuahua_444e7602_002.jpg",
+        "dataset\\chihuahua\\chihuahua_fd4d9457_001.jpg",
+        "dataset\\chihuahua\\chihuahua_025d1898_013.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_e71fa6df_004.jpg",
+        "dataset\\chikuwa\\chikuwa_018e664b_006.jpg",
+        "dataset\\chikuwa\\chikuwa_0649bfc5_001.jpg",
+        "dataset\\chikuwa\\chikuwa_66093850_020.jpg",
+        "dataset\\chihuahua\\chihuahua_0e359aeb_022.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_eea419d9_008.jpg",
+        "dataset\\chikuwa\\chikuwa_4ed11089_011.jpg",
+        "dataset\\chikuwa\\chikuwa_b30b8a04_009.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_7a7e03cd_003.jpg",
+        "dataset\\chihuahua\\chihuahua_895306af_021.jpg",
+        "dataset\\chihuahua\\chihuahua_0777ba2b_007.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_98797545_000.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_88a50f93_007.jpg",
+        "dataset\\chihuahua\\chihuahua_5d210639_008.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_73e76d10_019.jpg",
+        "dataset\\chikuwa\\chikuwa_44765b48_004.jpg",
+        "dataset\\chihuahua\\chihuahua_4f2bc132_017.jpg",
+        "dataset\\chikuwa\\chikuwa_95156905_017.jpg",
+        "dataset\\chihuahua\\chihuahua_f2d21d4f_020.jpg",
+        "dataset\\chihuahua\\chihuahua_6a3fc4b4_024.jpg",
+        "dataset\\chihuahua\\chihuahua_18b35e96_015.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_9a2707d6_010.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_1f9fc13c_001.jpg",
+        "dataset\\chihuahua\\chihuahua_96ea98c2_014.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_46ec053e_006.jpg",
+        "dataset\\chikuwa\\chikuwa_44c20bba_008.jpg",
+        "dataset\\chihuahua\\chihuahua_5e16e9a7_016.jpg"
+      ],
+      "labels": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    "val": {
+      "paths": [
+        "dataset\\chihuahua\\chihuahua_a74acb13_005.jpg",
+        "dataset\\chikuwa\\chikuwa_extra_e74bc9ee_004.jpg",
+        "dataset\\chihuahua\\chihuahua_f900fca0_019.jpg",
+        "dataset\\chihuahua\\chihuahua_5bf05bcd_011.jpg",
+        "dataset\\chihuahua\\chihuahua_f6db6a7e_003.jpg"
+      ],
+      "labels": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "test": {
+      "paths": [
+        "dataset\\chikuwa\\chikuwa_a06bef07_010.jpg",
+        "dataset\\chihuahua\\chihuahua_d2537840_000.jpg",
+        "dataset\\chihuahua\\chihuahua_84267a24_012.jpg",
+        "dataset\\chihuahua\\chihuahua_2e8cae61_009.jpg",
+        "dataset\\chihuahua\\chihuahua_e97c5dc5_023.jpg"
+      ],
+      "labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "statistics": {
+    "class_names": [
+      "chihuahua",
+      "chikuwa"
+    ],
+    "class_to_idx": {
+      "chihuahua": 0,
+      "chikuwa": 1
+    },
+    "total_samples": 50,
+    "split_sizes": {
+      "train": 40,
+      "val": 5,
+      "test": 5
+    },
+    "class_distribution": {
+      "train": {
+        "chihuahua": 17,
+        "chikuwa": 23
+      },
+      "val": {
+        "chihuahua": 4,
+        "chikuwa": 1
+      },
+      "test": {
+        "chihuahua": 4,
+        "chikuwa": 1
+      }
+    }
+  }
+}

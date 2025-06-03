@@ -11,3 +11,7 @@ opencv-python
 torch
 torchvision
 gradio
+
+# Phase 2 (データ前処理)
+matplotlib
+numpy
