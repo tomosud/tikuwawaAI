@@ -1,0 +1,13 @@
+pyperclip
+youtube_transcript_api
+yt-dlp
+Pillow
+requests
+google-generativeai
+
+# Chihuahua vs Chikuwa Classifier - Phase 1 (画像収集)
+duckduckgo-search
+opencv-python
+torch
+torchvision
+gradio
