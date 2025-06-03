@@ -2,12 +2,18 @@
 
 チワワ（犬種）とチクワ（食品）を画像から判別するAI分類ツール
 
+https://tomosud.github.io/tikuwawaAI/web_app/index.html
+
+![image](https://github.com/user-attachments/assets/9fbb6003-6c60-455c-bfe6-ae9c040de627)
+
+
 ## 概要
 
 このプロジェクトは、画像内の対象が「チワワ（犬種）」か「チクワ（食品）」かをAIで判別する画像分類ツールです。
-Pythonを用い、Windows環境で動作可能な形に構築します。
+Pythonを用い、Windows環境で学習したモデルをweb版で動くようにして、github pageで公開しています。
 
-## 環境要件
+
+## 学習とpyhonによる実行のための環境要件
 
 - Python 3.11
 - Windows 11
