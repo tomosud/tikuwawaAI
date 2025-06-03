@@ -6,6 +6,8 @@
 class ChihuahuaChikuwaClassifier {
     constructor() {
         this.model = null;
+        this.modelReady = false;
+        this.modelInitPromise = null;
         this.classNames = ['chihuahua', 'chikuwa'];
         this.classNamesJp = ['チワワ', 'チクワ'];
         this.modelPath = './chihuawa_chikuwa_classifier.onnx';
@@ -13,7 +15,7 @@ class ChihuahuaChikuwaClassifier {
         this.mean = [0.485, 0.456, 0.406];
         this.std = [0.229, 0.224, 0.225];
         
-        this.initializeModel();
+        this.modelInitPromise = this.initializeModel();
     }
 
     async initializeModel() {
@@ -25,6 +27,7 @@ class ChihuahuaChikuwaClassifier {
             
             // モデルセッションを作成
             this.model = await ort.InferenceSession.create(this.modelPath);
+            this.modelReady = true;
             console.log('✅ ONNXモデルの読み込み完了');
             
             // モデル情報をログ出力
@@ -34,7 +37,9 @@ class ChihuahuaChikuwaClassifier {
             
         } catch (error) {
             console.error('❌ モデル読み込みエラー:', error);
+            this.modelReady = false;
             this.showError('モデルの読み込みに失敗しました。ONNXファイルが正しく配置されているか確認してください。');
+            throw error;
         }
     }
 
@@ -95,8 +100,14 @@ class ChihuahuaChikuwaClassifier {
      */
     async predict(imageElement) {
         try {
-            if (!this.model) {
-                throw new Error('モデルが初期化されていません');
+            // モデルの初期化完了を待つ
+            if (!this.modelReady) {
+                console.log('⏳ モデルの初期化完了を待機中...');
+                await this.modelInitPromise;
+            }
+            
+            if (!this.model || !this.modelReady) {
+                throw new Error('モデルの初期化に失敗しました');
             }
 
             console.log('🔄 画像前処理中...');
