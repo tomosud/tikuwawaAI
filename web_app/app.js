@@ -168,19 +168,14 @@ class App {
         const analyzeBtn = document.getElementById('analyzeBtn');
         const resetBtn = document.getElementById('resetBtn');
 
-        // ファイル選択ボタン - アップロードエリアのクリックと重複を避けるため停止伝播
+        // ファイル選択ボタンのみのクリック処理
         uploadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
             imageInput.click();
         });
 
-        // アップロードエリアクリック（ボタン以外の領域）
-        uploadArea.addEventListener('click', (e) => {
-            // ボタンがクリックされた場合は処理しない
-            if (e.target !== uploadBtn) {
-                imageInput.click();
-            }
-        });
+        // アップロードエリア全体のクリック処理を削除（重複を避けるため）
 
         // ファイル選択 - 選択後すぐにAI処理を実行
         imageInput.addEventListener('change', (e) => {
@@ -208,16 +203,18 @@ class App {
             }
         });
 
-        // ペースト機能
-        document.addEventListener('paste', (e) => {
-            e.preventDefault();
-            const items = e.clipboardData.items;
+        // ペースト機能 - より確実に動作するよう修正
+        window.addEventListener('paste', (e) => {
+            const items = e.clipboardData?.items;
+            if (!items) return;
             
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
                 if (item.type.startsWith('image/')) {
+                    e.preventDefault();
                     const file = item.getAsFile();
                     if (file) {
+                        console.log('📋 画像をペーストしました:', file.name || 'clipboard-image');
                         this.handleImageUpload(file, true); // 自動実行フラグ
                         break;
                     }
@@ -225,10 +222,8 @@ class App {
             }
         });
 
-        // 判定ボタン
-        analyzeBtn.addEventListener('click', () => {
-            this.analyzeImage();
-        });
+        // 判定ボタンは非表示にする（自動実行するため不要）
+        analyzeBtn.style.display = 'none';
 
         // リセットボタン
         resetBtn.addEventListener('click', () => {

@@ -11,6 +11,7 @@ body {
     color: #333;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    outline: none; /* ペースト機能のためのtabindexでのフォーカス時のアウトラインを非表示 */
 }
 
 .container {
