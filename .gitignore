@@ -175,12 +175,16 @@ cython_debug/
 download_log.txt
 *.log
 
-# AI model files (usually too large)
-*.pt
+# AI model files (allow our trained model for distribution)
+# Note: We specifically include our trained model for easy distribution
+# *.pt files are allowed for this project
 *.pth
 *.h5
 *.pkl
 *.joblib
+
+# Explicitly allow our model and result files
+# (No exclusion needed - .pt files are not ignored)
 
 # Temporary files
 temp/
@@ -206,7 +210,7 @@ runs/
 
 # Model artifacts and experimental data
 experiments/
-models/
+# models/  # Allow models folder for this project
 checkpoints/
 results/
 outputs/
