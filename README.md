@@ -17,8 +17,7 @@ Pythonを用い、Windows環境で学習したモデルをweb版で動くよう�
 
 
 ## Deepwiki
-https://deepwiki.com/tomosud/tikuwawaAI
-
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tomosud/tikuwawaAI)
 
 ## 学習とpyhonによる実行のための環境要件
 
