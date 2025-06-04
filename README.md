@@ -4,7 +4,10 @@
 
 https://tomosud.github.io/tikuwawaAI/web_app/index.html
 
+↑このリンクからweb版をすぐ使えます。
+
 ![image](https://github.com/user-attachments/assets/9fbb6003-6c60-455c-bfe6-ae9c040de627)
+
 
 
 ## 概要
