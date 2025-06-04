@@ -16,6 +16,10 @@ https://tomosud.github.io/tikuwawaAI/web_app/index.html
 Pythonを用い、Windows環境で学習したモデルをweb版で動くようにして、github pageで公開しています。
 
 
+## Deepwiki
+https://deepwiki.com/tomosud/tikuwawaAI
+
+
 ## 学習とpyhonによる実行のための環境要件
 
 - Python 3.11
