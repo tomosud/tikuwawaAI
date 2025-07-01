@@ -169,7 +169,14 @@ class ChihuahuaChikuwaClassifier {
 class App {
     constructor() {
         this.classifier = new ChihuahuaChikuwaClassifier();
+        this.sampleImages = [
+            { path: './sample/tiwawa01.png', label: 'sample 1', type: 'chihuahua' },
+            { path: './sample/tikuwa01.png', label: 'sample 2', type: 'chikuwa' },
+            { path: './sample/tiwawa02.png', label: 'sample 3', type: 'chihuahua' },
+            { path: './sample/tikuwa02.png', label: 'sample 4', type: 'chikuwa' }
+        ];
         this.setupEventListeners();
+        this.initializeSampleImages();
     }
 
     setupEventListeners() {
@@ -238,10 +245,71 @@ class App {
         }
     }
 
-    handleImageUpload(file, autoAnalyze = false) {
+    async initializeSampleImages() {
+        try {
+            // モデルの初期化完了を待つ
+            await this.classifier.modelInitPromise;
+            
+            const sampleImagesGrid = document.getElementById('sampleImagesGrid');
+            
+            // サンプル画像を生成
+            this.sampleImages.forEach((sample, index) => {
+                const item = document.createElement('div');
+                item.className = 'sample-image-item';
+                item.innerHTML = `
+                    <img src="${sample.path}" alt="${sample.label}" loading="lazy">
+                    <div class="sample-image-label">${sample.label}</div>
+                `;
+                
+                // クリックイベントを追加
+                item.addEventListener('click', () => {
+                    this.loadSampleImage(sample);
+                });
+                
+                sampleImagesGrid.appendChild(item);
+            });
+            
+            // デフォルトで最初のチワワ画像をロード
+            const defaultSample = this.sampleImages.find(s => s.type === 'chihuahua');
+            if (defaultSample) {
+                setTimeout(() => {
+                    this.loadSampleImage(defaultSample);
+                }, 500);
+            }
+            
+        } catch (error) {
+            console.error('サンプル画像の初期化に失敗:', error);
+        }
+    }
+
+    loadSampleImage(sample) {
+        const previewImage = document.getElementById('previewImage');
+        previewImage.src = sample.path;
+        
+        // プレビューセクションを表示
+        document.getElementById('previewSection').style.display = 'block';
+        document.getElementById('resultSection').style.display = 'none';
+        
+        // 画像の読み込み完了を待ってからAI判定を実行
+        previewImage.onload = () => {
+            this.analyzeImage();
+        };
+    }
+
+    async handleImageUpload(file, autoAnalyze = false) {
         if (!file.type.startsWith('image/')) {
             alert('画像ファイルを選択してください。');
             return;
+        }
+
+        // モデルの初期化完了を確認
+        if (!this.classifier.modelReady) {
+            try {
+                await this.classifier.modelInitPromise;
+            } catch (error) {
+                alert('モデルの初期化に失敗しました。ページを再読み込みしてください。');
+                return;
+            }
         }
 
         const reader = new FileReader();

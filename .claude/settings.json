@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(*)",
+      "Write(*)",
+      "Read(*)",
+      "Delete(*)",
+      "Bash(*)",
+      "Task(*)"
+    ],
+    "deny": [
+      "Delete(/system/*)"
+    ]
+  },
+  "codeExecution": "always",
+  "bashApproval": "never",
+  "fileOperations": "always"
+}

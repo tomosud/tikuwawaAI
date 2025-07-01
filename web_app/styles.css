@@ -60,6 +60,60 @@ body {
     margin-bottom: 30px;
 }
 
+/* サンプル画像セクション */
+.sample-images-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sample-images-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.sample-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.sample-image-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.sample-image-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sample-image-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+}
+
+.sample-image-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 8px 4px 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
 .upload-area {
     border: 3px dashed #bdc3c7;
     border-radius: 15px;
@@ -263,16 +317,26 @@ body {
         padding: 10px;
     }
     
+    .main-header {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
     .main-header h1 {
         font-size: 2em;
     }
     
     .main-content {
         padding: 20px;
+        margin-bottom: 20px;
     }
     
     .upload-area {
         padding: 15px;
+    }
+    
+    .upload-area p {
+        font-size: 1em;
     }
     
     .result-text {
@@ -280,18 +344,55 @@ body {
     }
     
     .image-preview img {
-        max-width: 500px;
-        max-height: 500px;
+        max-width: 100%;
+        max-height: 300px;
+    }
+    
+    .sample-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .sample-image-item img {
+        height: 80px;
+    }
+    
+    .info-section {
+        padding: 20px;
+    }
+    
+    .info-content h2 {
+        font-size: 1.3em;
+    }
+    
+    .info-content h3 {
+        font-size: 1.1em;
     }
 }
 
 @media (max-width: 480px) {
+    .main-header {
+        padding: 15px;
+    }
+    
     .main-header h1 {
         font-size: 1.5em;
     }
     
+    .main-header p {
+        font-size: 1em;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
     .upload-area {
         padding: 10px;
+    }
+    
+    .upload-icon {
+        font-size: 3em;
     }
     
     .result-text {
@@ -299,7 +400,26 @@ body {
     }
     
     .image-preview img {
-        max-width: 400px;
-        max-height: 400px;
+        max-width: 100%;
+        max-height: 250px;
+    }
+    
+    .sample-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .sample-image-item img {
+        height: 60px;
+    }
+    
+    .sample-image-label {
+        font-size: 0.7em;
+        padding: 4px 2px 2px;
+    }
+    
+    .detail-box {
+        font-size: 0.9em;
+        padding: 15px;
     }
 }
