@@ -294,6 +294,7 @@ class App {
         // プレビューセクションを表示
         document.getElementById('previewSection').style.display = 'block';
         document.getElementById('resultSection').style.display = 'none';
+        document.getElementById('detailSection').style.display = 'none';
         
         // 画像の読み込み完了を待ってからAI判定を実行
         previewImage.onload = () => {
@@ -325,6 +326,7 @@ class App {
             // プレビューセクションを表示
             document.getElementById('previewSection').style.display = 'block';
             document.getElementById('resultSection').style.display = 'none';
+            document.getElementById('detailSection').style.display = 'none';
             
             // 自動実行フラグが設定されている場合、すぐにAI判定を実行
             if (autoAnalyze) {
@@ -343,12 +345,14 @@ class App {
         const resultSection = document.getElementById('resultSection');
         const resultText = document.getElementById('resultText');
         const confidenceText = document.getElementById('confidenceText');
+        const detailSection = document.getElementById('detailSection');
         const detailBox = document.getElementById('detailBox');
 
         try {
             // ローディング表示
             loadingSection.style.display = 'block';
             resultSection.style.display = 'none';
+            detailSection.style.display = 'none';
 
             // 画像が完全に読み込まれるまで待機
             await new Promise((resolve) => {
@@ -378,6 +382,7 @@ class App {
             // ローディングを非表示、結果を表示
             loadingSection.style.display = 'none';
             resultSection.style.display = 'block';
+            detailSection.style.display = 'block';
 
         } catch (error) {
             console.error('分析エラー:', error);
@@ -389,6 +394,7 @@ class App {
             
             loadingSection.style.display = 'none';
             resultSection.style.display = 'block';
+            detailSection.style.display = 'block';
         }
     }
 
@@ -396,6 +402,7 @@ class App {
         // 全セクションをリセット
         document.getElementById('previewSection').style.display = 'none';
         document.getElementById('resultSection').style.display = 'none';
+        document.getElementById('detailSection').style.display = 'none';
         document.getElementById('loadingSection').style.display = 'none';
         
         // 入力をクリア
