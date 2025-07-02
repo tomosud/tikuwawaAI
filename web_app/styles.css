@@ -24,24 +24,19 @@ body {
 .main-header {
     text-align: center;
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .main-header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    margin-bottom: 0;
     color: #2c3e50;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.main-header p {
-    font-size: 1.2em;
-    color: #7f8c8d;
 }
 
 /* メインコンテンツ */
@@ -64,12 +59,12 @@ body {
 .sample-images-section {
     margin-bottom: 20px;
     text-align: center;
-}
-
-.sample-images-section h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-size: 1.3em;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .sample-images-grid {
@@ -117,11 +112,15 @@ body {
 .upload-area {
     border: 3px dashed #bdc3c7;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     background: #f8f9fa;
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .upload-area:hover {
@@ -137,26 +136,26 @@ body {
 }
 
 .upload-content {
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .upload-icon {
-    font-size: 4em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
 .upload-area p {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #7f8c8d;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .upload-btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.1em;
+    padding: 12px 24px;
+    font-size: 1em;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -318,12 +317,12 @@ body {
     }
     
     .main-header {
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
     }
     
     .main-header h1 {
-        font-size: 2em;
+        font-size: 1.5em;
     }
     
     .main-content {
@@ -333,10 +332,17 @@ body {
     
     .upload-area {
         padding: 15px;
+        min-height: 60px;
     }
     
     .upload-area p {
-        font-size: 1em;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    
+    .sample-images-section {
+        padding: 15px;
+        margin-bottom: 15px;
     }
     
     .result-text {
@@ -372,15 +378,11 @@ body {
 
 @media (max-width: 480px) {
     .main-header {
-        padding: 15px;
+        padding: 12px;
     }
     
     .main-header h1 {
-        font-size: 1.5em;
-    }
-    
-    .main-header p {
-        font-size: 1em;
+        font-size: 1.3em;
     }
     
     .main-content {
@@ -389,10 +391,22 @@ body {
     
     .upload-area {
         padding: 10px;
+        min-height: 50px;
     }
     
     .upload-icon {
-        font-size: 3em;
+        font-size: 2em;
+        margin-bottom: 8px;
+    }
+    
+    .upload-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    .sample-images-section {
+        padding: 12px;
+        margin-bottom: 12px;
     }
     
     .result-text {

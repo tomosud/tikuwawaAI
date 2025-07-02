@@ -10,23 +10,21 @@
 <body tabindex="0">
     <div class="container">
         <header class="main-header">
-            <h1>🐕 チワワ vs チクワ AI判定器 🥢</h1>
-            <p>画像をアップロードしてチワワとチクワを判定します</p>
+            <h1>チワワ vs チクワ AI判定器</h1>
         </header>
 
         <main class="main-content">
-            <div class="upload-section">
-                <div class="sample-images-section" id="sampleImagesSection">
-                    <h3>📁 サンプル画像で試す</h3>
-                    <div class="sample-images-grid" id="sampleImagesGrid">
-                        <!-- サンプル画像がここに動的に追加されます -->
-                    </div>
+            <div class="sample-images-section" id="sampleImagesSection">
+                <div class="sample-images-grid" id="sampleImagesGrid">
+                    <!-- サンプル画像がここに動的に追加されます -->
                 </div>
-                
+            </div>
+            
+            <div class="upload-section">
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-content">
                         <div class="upload-icon">📷</div>
-                        <p>画像をドラッグ&ドロップ、クリックして選択、<br>またはCtrl+Vでペーストしてください</p>
+                        <p>画像をアップロード、またはCtrl+Vでペースト</p>
                         <input type="file" id="imageInput" accept="image/*" hidden>
                         <button class="upload-btn" id="uploadBtn">画像を選択</button>
                     </div>
@@ -65,9 +63,10 @@
                 
                 <h3>🎯 判定について</h3>
                 <ul>
-                    <li><strong>チワワ:</strong> 犬の画像として判定</li>
-                    <li><strong>チクワ:</strong> 食品の画像として判定</li>
-                    <li>信頼度が高いほど確信度が高い結果です</li>
+                    <li><strong>AI技術:</strong> ResNet18モデルをONNX.jsで実行</li>
+                    <li><strong>プライバシー:</strong> 画像はサーバーに送信されず、ブラウザ内で処理</li>
+                    <li><strong>オフライン:</strong> 初回読み込み後はインターネット接続不要</li>
+                    <li><strong>判定結果:</strong> チワワ（犬）またはチクワ（食品）を信頼度付きで表示</li>
                 </ul>
             </div>
         </footer>

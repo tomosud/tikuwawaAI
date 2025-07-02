@@ -185,14 +185,19 @@ class App {
         const imageInput = document.getElementById('imageInput');
         const analyzeBtn = document.getElementById('analyzeBtn');
 
-        // ファイル選択ボタンのみのクリック処理
+        // ファイル選択ボタンのクリック処理
         uploadBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             imageInput.click();
         });
 
-        // アップロードエリア全体のクリック処理を削除（重複を避けるため）
+        // アップロードエリア全体のクリック処理
+        uploadArea.addEventListener('click', (e) => {
+            if (e.target === uploadArea || e.target.closest('.upload-content')) {
+                imageInput.click();
+            }
+        });
 
         // ファイル選択 - 選択後すぐにAI処理を実行
         imageInput.addEventListener('change', (e) => {
